@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "startingCash": 100000,
+  "cash": 100000,
+  "positions": {},
+  "trades": [],
+  "decisions": [],
+  "nav": [
+    {
+      "time": "2026-07-13T00:00:00.000Z",
+      "value": 100000
+    }
+  ],
+  "quotes": [],
+  "lastTradeDate": null,
+  "updatedAt": null
+}
