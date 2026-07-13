@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>SIMBA 云端 A 股模拟盘</title>
+  <style>
+    :root{color-scheme:light;--bg:#f5f7fa;--panel:#fff;--text:#192235;--muted:#6b7484;--line:#e2e7ef;--blue:#315efb;--red:#dc3c42;--green:#16865d;--soft:#eef2ff;--shadow:0 12px 35px rgba(27,39,67,.07)}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}.shell{max-width:1100px;margin:auto;padding:30px 18px 60px}header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}h1{font-size:25px;margin:0 0 7px}h2{font-size:17px;margin:0 0 14px}.sub,.muted{color:var(--muted)}.live{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;background:#28a36b;box-shadow:0 0 0 4px rgba(40,163,107,.12)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:17px}.metric span{display:block;color:var(--muted);font-size:12px;margin-bottom:8px}.metric strong{font-size:21px}.layout{display:grid;grid-template-columns:1.45fr .85fr;gap:18px}.stack{display:grid;gap:18px}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.badge{padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--blue);font-size:12px}.decision{line-height:1.7}.decision strong{display:block;margin-bottom:6px}.chart{height:180px;margin-top:8px}.chart svg{width:100%;height:100%;overflow:visible}.area{fill:rgba(49,94,251,.1)}.line{fill:none;stroke:var(--blue);stroke-width:2.5}.gridline{stroke:var(--line)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:11px 7px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{font-weight:500;color:var(--muted)}th:first-child,td:first-child{text-align:left}tr:last-child td{border-bottom:0}.table-wrap{overflow-x:auto}.name{font-weight:600}.code{display:block;color:var(--muted);font-size:11px;margin-top:3px}.up{color:var(--red)}.down{color:var(--green)}.empty{text-align:center;color:var(--muted);padding:28px}.log{max-height:420px;overflow:auto}.reason{display:block;max-width:260px;overflow:hidden;text-overflow:ellipsis;color:var(--muted);font-size:11px}.error{padding:14px;border-radius:10px;background:#fff2f2;color:#9d252b}footer{text-align:center;color:var(--muted);font-size:12px;line-height:1.7;margin-top:20px}@media(max-width:800px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.shell{padding:20px 12px 45px}header{display:block}.live{margin-top:12px}.metrics{gap:8px}.metric strong{font-size:17px}.card{padding:14px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div><h1>SIMBA 云端 A 股模拟盘</h1><p class="sub">十万元虚拟资金 · 云端定时选股与交易</p></div>
+      <div class="live"><span class="dot"></span><span id="updated">读取云端账户…</span></div>
+    </header>
+    <div id="error"></div>
+    <section class="metrics" aria-label="账户概览">
+      <div class="card metric"><span>总资产</span><strong id="total">—</strong></div>
+      <div class="card metric"><span>可用现金</span><strong id="cash">—</strong></div>
+      <div class="card metric"><span>持仓市值</span><strong id="market">—</strong></div>
+      <div class="card metric"><span>累计收益</span><strong id="profit">—</strong></div>
+    </section>
+    <div class="layout">
+      <div class="stack">
+        <section class="card">
+          <div class="toolbar"><h2>净值曲线</h2><span id="returnBadge" class="badge">等待首次更新</span></div>
+          <div id="chart" class="chart"></div>
+        </section>
+        <section class="card">
+          <h2>当前持仓</h2>
+          <div id="positions" class="table-wrap"></div>
+        </section>
+        <section class="card">
+          <h2>成交记录</h2>
+          <div id="trades" class="table-wrap log"></div>
+        </section>
+      </div>
+      <aside class="stack">
+        <section class="card">
+          <div class="toolbar"><h2>最近决策</h2><span class="badge">云端策略</span></div>
+          <div id="decision" class="decision muted">等待云端任务首次运行</div>
+        </section>
+        <section class="card">
+          <h2>运行规则</h2>
+          <p class="muted" style="line-height:1.8;margin:0">交易日北京时间 09:40、13:30 更新行情，14:40 执行每日调仓。最多持有 4 只，单只约 20%，保留约 15% 现金；遵守 T+1，并计入模拟费用、止损和止盈。</p>
+        </section>
+      </aside>
+    </div>
+    <footer>仅为模拟练习，不连接券商，不产生真实委托。公开行情可能延迟或中断，不构成投资建议，也不保证盈利。</footer>
+  </main>
+  <script>
+    const CNY=new Intl.NumberFormat('zh-CN',{style:'currency',currency:'CNY',minimumFractionDigits:2});
+    const cls=(n)=>n>0?'up':n<0?'down':'';
+    const quoteMap=(a)=>new Map((a.quotes||[]).map(q=>[q.code,q]));
+    function totals(a){const qm=quoteMap(a);let market=0;for(const [code,p] of Object.entries(a.positions||{}))market+=(qm.get(code)?.price||p.lastPrice||0)*p.quantity;return{market,total:a.cash+market,profit:a.cash+market-a.startingCash};}
+    function draw(nav){const root=document.getElementById('chart');const pts=nav?.length>1?nav:[...(nav||[]),{time:new Date().toISOString(),value:nav?.[0]?.value||100000}];const vs=pts.map(p=>p.value);let min=Math.min(...vs),max=Math.max(...vs);const pad=Math.max((max-min)*.15,200);min-=pad;max+=pad;const W=700,H=180,L=7,R=7,T=14,B=24;const xy=pts.map((p,i)=>({x:L+i/(pts.length-1||1)*(W-L-R),y:T+(max-p.value)/(max-min)*(H-T-B)}));const line=xy.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');const area=`${line} L${xy.at(-1).x},${H-B} L${xy[0].x},${H-B} Z`;root.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="账户净值曲线"><line class="gridline" x1="0" y1="${T}" x2="${W}" y2="${T}"/><line class="gridline" x1="0" y1="${H-B}" x2="${W}" y2="${H-B}"/><path class="area" d="${area}"/><path class="line" d="${line}"/><circle cx="${xy.at(-1).x}" cy="${xy.at(-1).y}" r="4" fill="var(--blue)"/><text x="5" y="${T+11}" fill="var(--muted)" font-size="11">${CNY.format(max)}</text><text x="5" y="${H-5}" fill="var(--muted)" font-size="11">${CNY.format(min)}</text></svg>`;}
+    function render(a){const t=totals(a),qm=quoteMap(a);document.getElementById('total').textContent=CNY.format(t.total);document.getElementById('cash').textContent=CNY.format(a.cash);document.getElementById('market').textContent=CNY.format(t.market);const p=document.getElementById('profit');p.textContent=`${t.profit>=0?'+':''}${CNY.format(t.profit)}`;p.className=cls(t.profit);document.getElementById('returnBadge').textContent=`收益率 ${(t.profit/a.startingCash*100).toFixed(2)}%`;document.getElementById('updated').textContent=a.updatedAt?`云端更新 ${new Date(a.updatedAt).toLocaleString('zh-CN',{hour12:false})}`:'等待首次云端运行';draw(a.nav);
+      const positions=Object.entries(a.positions||{});document.getElementById('positions').innerHTML=positions.length?`<table><thead><tr><th>股票</th><th>数量</th><th>成本</th><th>现价</th><th>盈亏</th></tr></thead><tbody>${positions.map(([code,x])=>{const q=qm.get(code),price=q?.price||x.lastPrice||0,avg=x.cost/x.quantity,pnl=(price-avg)*x.quantity;return`<tr><td><span class="name">${q?.name||code}</span><span class="code">${code}</span></td><td>${x.quantity}</td><td>${avg.toFixed(2)}</td><td>${price.toFixed(2)}</td><td class="${cls(pnl)}">${pnl>=0?'+':''}${CNY.format(pnl)}</td></tr>`}).join('')}</tbody></table>`:'<div class="empty">尚未建仓</div>';
+      document.getElementById('trades').innerHTML=a.trades?.length?`<table><thead><tr><th>时间</th><th>方向</th><th>股票</th><th>数量</th><th>成交价</th></tr></thead><tbody>${[...a.trades].reverse().map(x=>`<tr><td>${new Date(x.time).toLocaleString('zh-CN',{hour12:false})}</td><td class="${x.side==='buy'?'up':'down'}">${x.side==='buy'?'买入':'卖出'}</td><td><span class="name">${x.name}</span><span class="reason">${x.reason}</span></td><td>${x.quantity}</td><td>${x.price.toFixed(2)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">暂无成交</div>';
+      const d=a.decisions?.at(-1);document.getElementById('decision').innerHTML=d?`<strong>${d.date} · 总资产 ${CNY.format(d.totalAsset)}</strong>${d.actions.map(x=>`<div>${x}</div>`).join('')}`:'等待云端任务首次运行';}
+    fetch(`account.json?t=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`账户数据读取失败：${r.status}`);return r.json()}).then(render).catch(e=>{document.getElementById('error').innerHTML=`<div class="error">${e.message}</div>`});
+  </script>
+</body>
+</html>
