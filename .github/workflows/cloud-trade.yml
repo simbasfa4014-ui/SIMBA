@@ -1,0 +1,38 @@
+name: Cloud paper trading
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 1 * * 1-5'
+    - cron: '30 5 * * 1-5'
+    - cron: '40 6 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cloud-paper-trading
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Update quotes and run strategy
+        run: node cloud/trade.js
+      - name: Save account changes
+        run: |
+          if git diff --quiet -- data/account.json docs/account.json; then
+            echo "No account changes"
+            exit 0
+          fi
+          git config user.name "simba-paper-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/account.json docs/account.json
+          git commit -m "Update simulated portfolio"
+          git push
