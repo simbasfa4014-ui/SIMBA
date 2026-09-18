@@ -12,7 +12,7 @@
           "quantity": 400
         }
       ],
-      "lastPrice": 40.64
+      "lastPrice": 40.59
     },
     "600050": {
       "quantity": 4500,
@@ -34,7 +34,7 @@
           "quantity": 100
         }
       ],
-      "lastPrice": 122.09
+      "lastPrice": 122
     },
     "000725": {
       "quantity": 3400,
@@ -45,7 +45,7 @@
           "quantity": 3400
         }
       ],
-      "lastPrice": 5.95
+      "lastPrice": 5.92
     }
   },
   "trades": [
@@ -231,14 +231,6 @@
     }
   ],
   "decisions": [
-    {
-      "time": "2026-07-22T10:34:24.530Z",
-      "date": "2026-07-22",
-      "actions": [
-        "行情已更新，尚未到每日调仓窗口"
-      ],
-      "totalAsset": 100000
-    },
     {
       "time": "2026-07-22T12:09:37.365Z",
       "date": "2026-07-22",
@@ -1201,6 +1193,14 @@
         "今日没有满足条件的交易，保持现有持仓和现金"
       ],
       "totalAsset": 95861.5
+    },
+    {
+      "time": "2026-09-18T09:59:30.678Z",
+      "date": "2026-09-18",
+      "actions": [
+        "行情已更新，尚未到每日调仓窗口"
+      ],
+      "totalAsset": 95730.5
     }
   ],
   "nav": [
@@ -1763,63 +1763,67 @@
     {
       "time": "2026-09-18T06:36:25.598Z",
       "value": 95861.5
+    },
+    {
+      "time": "2026-09-18T09:59:30.678Z",
+      "value": 95730.5
     }
   ],
   "quotes": [
     {
       "code": "000001",
       "name": "平安银行",
-      "price": 11.71,
+      "price": 11.7,
       "previousClose": 11.61,
       "open": 11.59,
       "high": 11.82,
       "low": 11.56,
-      "changePercent": 0.86,
-      "quoteTime": "20260918143624"
+      "changePercent": 0.78,
+      "quoteTime": "20260918161427"
     },
     {
       "code": "000333",
       "name": "美的集团",
-      "price": 84.3,
+      "price": 84.4,
       "previousClose": 85.04,
       "open": 84.9,
       "high": 85.04,
       "low": 83.88,
-      "changePercent": -0.87,
-      "quoteTime": "20260918143624"
+      "changePercent": -0.75,
+      "quoteTime": "20260918161439"
     },
     {
       "code": "000651",
       "name": "格力电器",
-      "price": 38.5,
+      "price": 38.56,
       "previousClose": 37.98,
       "open": 38.03,
       "high": 38.58,
       "low": 37.97,
-      "changePercent": 1.37,
-      "quoteTime": "20260918143624"
+      "changePercent": 1.53,
+      "quoteTime": "20260918161403"
     },
     {
       "code": "000725",
       "name": "京东方Ａ",
-      "price": 5.95,
+      "price": 5.92,
       "previousClose": 5.75,
       "open": 5.78,
       "high": 5.95,
       "low": 5.75,
-      "changePercent": 3.48,
-      "quoteTime": "20260918143624"
+      "changePercent": 2.96,
+      "quoteTime": "20260918161421"
     },
     {
       "code": "000858",
       "name": "五 粮 液",
-      "price": 70.01,
+      "price": 70,
       "previousClose": 69.13,
       "open": 69.11,
-      "high": 70.06,
+      "high": 70.09,
       "low": 68.98,
-      "changePercent": 1.27,
-      "quoteTime": "20260918143624"
+      "changePercent": 1.26,
+      "quoteTime": "20260918161448"
     },
     {
       "code": "002050",
@@ -1830,73 +1834,73 @@
       "high": 36.13,
       "low": 34.9,
       "changePercent": 1.93,
-      "quoteTime": "20260918143624"
+      "quoteTime": "20260918161403"
     },
     {
       "code": "002230",
       "name": "科大讯飞",
-      "price": 38.53,
+      "price": 38.48,
       "previousClose": 38.34,
       "open": 38.49,
       "high": 38.68,
       "low": 38.44,
-      "changePercent": 0.5,
-      "quoteTime": "20260918143624"
+      "changePercent": 0.37,
+      "quoteTime": "20260918161442"
     },
     {
       "code": "002415",
       "name": "海康威视",
-      "price": 32.92,
+      "price": 32.94,
       "previousClose": 32.45,
       "open": 32.66,
       "high": 33.04,
       "low": 32.57,
-      "changePercent": 1.45,
-      "quoteTime": "20260918143621"
+      "changePercent": 1.51,
+      "quoteTime": "20260918161436"
     },
     {
       "code": "002475",
       "name": "立讯精密",
-      "price": 54.25,
+      "price": 54.1,
       "previousClose": 52.13,
       "open": 52.99,
       "high": 54.7,
       "low": 52.56,
-      "changePercent": 4.07,
-      "quoteTime": "20260918143621"
+      "changePercent": 3.78,
+      "quoteTime": "20260918161457"
     },
     {
       "code": "002594",
       "name": "比亚迪",
-      "price": 84.53,
+      "price": 84.3,
       "previousClose": 84.97,
       "open": 84,
       "high": 84.67,
       "low": 83.27,
-      "changePercent": -0.52,
-      "quoteTime": "20260918143621"
+      "changePercent": -0.79,
+      "quoteTime": "20260918161421"
     },
     {
       "code": "300014",
       "name": "亿纬锂能",
-      "price": 51.73,
+      "price": 51.56,
       "previousClose": 48.23,
       "open": 51.28,
       "high": 52.06,
       "low": 50.18,
-      "changePercent": 7.26,
-      "quoteTime": "20260918143621"
+      "changePercent": 6.9,
+      "quoteTime": "20260918161424"
     },
     {
       "code": "300059",
       "name": "东方财富",
-      "price": 18.35,
+      "price": 18.37,
       "previousClose": 18.09,
       "open": 18.21,
       "high": 18.42,
       "low": 18.19,
-      "changePercent": 1.44,
-      "quoteTime": "20260918143621"
+      "changePercent": 1.55,
+      "quoteTime": "20260918161442"
     },
     {
       "code": "300122",
@@ -1907,62 +1911,62 @@
       "high": 12.85,
       "low": 12.43,
       "changePercent": 3.24,
-      "quoteTime": "20260918143621"
+      "quoteTime": "20260918161418"
     },
     {
       "code": "300308",
       "name": "中际旭创",
-      "price": 926.2,
+      "price": 926.43,
       "previousClose": 896,
       "open": 910,
       "high": 947.6,
       "low": 893.08,
-      "changePercent": 3.37,
-      "quoteTime": "20260918143621"
+      "changePercent": 3.4,
+      "quoteTime": "20260918161424"
     },
     {
       "code": "300750",
       "name": "宁德时代",
-      "price": 301.42,
+      "price": 301.95,
       "previousClose": 304.3,
       "open": 309.77,
       "high": 310,
       "low": 300.27,
-      "changePercent": -0.95,
-      "quoteTime": "20260918143621"
+      "changePercent": -0.77,
+      "quoteTime": "20260918161412"
     },
     {
       "code": "600009",
       "name": "上海机场",
-      "price": 22.72,
+      "price": 22.68,
       "previousClose": 22.47,
       "open": 22.52,
       "high": 22.78,
       "low": 22.5,
-      "changePercent": 1.11,
-      "quoteTime": "20260918143624"
+      "changePercent": 0.93,
+      "quoteTime": "20260918161451"
     },
     {
       "code": "600031",
       "name": "三一重工",
-      "price": 17.91,
+      "price": 17.89,
       "previousClose": 18.07,
       "open": 18.07,
       "high": 18.12,
       "low": 17.85,
-      "changePercent": -0.89,
-      "quoteTime": "20260918143624"
+      "changePercent": -1,
+      "quoteTime": "20260918161448"
     },
     {
       "code": "600036",
       "name": "招商银行",
-      "price": 40.64,
+      "price": 40.59,
       "previousClose": 40.6,
       "open": 40.53,
       "high": 40.92,
       "low": 40.43,
-      "changePercent": 0.1,
-      "quoteTime": "20260918143621"
+      "changePercent": -0.02,
+      "quoteTime": "20260918161430"
     },
     {
       "code": "600050",
@@ -1973,130 +1977,130 @@
       "high": 4.29,
       "low": 4.19,
       "changePercent": 0.48,
-      "quoteTime": "20260918143624"
+      "quoteTime": "20260918161448"
     },
     {
       "code": "600089",
       "name": "特变电工",
-      "price": 18.09,
+      "price": 18.13,
       "previousClose": 17.91,
       "open": 17.98,
       "high": 18.18,
       "low": 17.98,
-      "changePercent": 1.01,
-      "quoteTime": "20260918143624"
+      "changePercent": 1.23,
+      "quoteTime": "20260918161448"
     },
     {
       "code": "600276",
       "name": "恒瑞医药",
-      "price": 43.93,
+      "price": 43.91,
       "previousClose": 43.23,
       "open": 43.52,
       "high": 44.15,
       "low": 43.5,
-      "changePercent": 1.62,
-      "quoteTime": "20260918143623"
+      "changePercent": 1.57,
+      "quoteTime": "20260918161453"
     },
     {
       "code": "600309",
       "name": "万华化学",
-      "price": 70.5,
+      "price": 71.15,
       "previousClose": 70.33,
       "open": 70.33,
-      "high": 70.96,
+      "high": 71.15,
       "low": 69.93,
-      "changePercent": 0.24,
-      "quoteTime": "20260918143622"
+      "changePercent": 1.17,
+      "quoteTime": "20260918161440"
     },
     {
       "code": "600519",
       "name": "贵州茅台",
-      "price": 1259.56,
+      "price": 1257.12,
       "previousClose": 1266.98,
       "open": 1262.99,
       "high": 1265.88,
       "low": 1256.1,
-      "changePercent": -0.59,
-      "quoteTime": "20260918143621"
+      "changePercent": -0.78,
+      "quoteTime": "20260918161436"
     },
     {
       "code": "601012",
       "name": "隆基绿能",
-      "price": 11.22,
+      "price": 11.23,
       "previousClose": 10.99,
       "open": 11.06,
-      "high": 11.23,
+      "high": 11.24,
       "low": 11.04,
-      "changePercent": 2.09,
-      "quoteTime": "20260918143622"
+      "changePercent": 2.18,
+      "quoteTime": "20260918161449"
     },
     {
       "code": "601088",
       "name": "中国神华",
-      "price": 46.31,
+      "price": 46.23,
       "previousClose": 46.48,
       "open": 46.2,
       "high": 46.7,
       "low": 46.1,
-      "changePercent": -0.37,
-      "quoteTime": "20260918143622"
+      "changePercent": -0.54,
+      "quoteTime": "20260918161437"
     },
     {
       "code": "601318",
       "name": "中国平安",
-      "price": 53.32,
+      "price": 53.37,
       "previousClose": 53.35,
       "open": 53.32,
       "high": 53.8,
       "low": 53.03,
-      "changePercent": -0.06,
-      "quoteTime": "20260918143623"
+      "changePercent": 0.04,
+      "quoteTime": "20260918161432"
     },
     {
       "code": "601398",
       "name": "工商银行",
-      "price": 8.08,
+      "price": 8.07,
       "previousClose": 8.14,
       "open": 8.09,
       "high": 8.17,
       "low": 8.06,
-      "changePercent": -0.74,
-      "quoteTime": "20260918143622"
+      "changePercent": -0.86,
+      "quoteTime": "20260918161434"
     },
     {
       "code": "601899",
       "name": "紫金矿业",
-      "price": 31.51,
+      "price": 31.41,
       "previousClose": 30.9,
       "open": 31.5,
       "high": 31.72,
       "low": 31.16,
-      "changePercent": 1.97,
-      "quoteTime": "20260918143624"
+      "changePercent": 1.65,
+      "quoteTime": "20260918161459"
     },
     {
       "code": "603259",
       "name": "药明康德",
-      "price": 160.6,
+      "price": 160,
       "previousClose": 160.49,
       "open": 161.11,
       "high": 164.55,
       "low": 158.7,
-      "changePercent": 0.07,
-      "quoteTime": "20260918143622"
+      "changePercent": -0.31,
+      "quoteTime": "20260918161449"
     },
     {
       "code": "688981",
       "name": "中芯国际",
-      "price": 122.09,
+      "price": 122,
       "previousClose": 118.62,
       "open": 120.78,
       "high": 123.43,
       "low": 119.93,
-      "changePercent": 2.93,
-      "quoteTime": "20260918143624"
+      "changePercent": 2.85,
+      "quoteTime": "20260918161451"
     }
   ],
   "lastTradeDate": "2026-09-18",
-  "updatedAt": "2026-09-18T06:36:25.598Z"
+  "updatedAt": "2026-09-18T09:59:30.678Z"
 }
